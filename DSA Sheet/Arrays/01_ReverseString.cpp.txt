@@ -1,0 +1,20 @@
+// ✅ Problem: Reverse a String
+// 📁 Category: Strings
+// 🔗 GFG Link: https://practice.geeksforgeeks.org/problems/reverse-a-string/1
+// 💡 Approach: Two-pointer technique
+
+
+// User function Template for C++
+class Solution {
+  public:
+    string reverseString(string& s) {
+       int left=0;
+       int right=s.length()-1;
+       while(left<right){
+       swap(s[left],s[right]);
+       left++;
+       right--;
+       }
+       return s;
+    }
+};
