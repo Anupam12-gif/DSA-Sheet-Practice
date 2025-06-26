@@ -50,7 +50,7 @@ DSA-LoveBabbar-Sheet/
 ## 🙌 Connect with Me
 
 - 🔗 [GitHub](https://github.com/Anupam12-gif)
-- 📬 [LinkedIn](https://www.linkedin.com/in/anupam-tiwari-887b13285?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) *(Add this when profile ready)*
+- 📬 [LinkedIn](https://www.linkedin.com/in/anupam-tiwari-887b13285?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
 
 ---
 
