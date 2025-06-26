@@ -1,0 +1,23 @@
+// ✅ Problem: Move all negative elements to the end of array (preserve order)
+// 🔗 Example: Input = {1, -2, 3, -4, 5} → Output = {1, 3, 5, -2, -4}
+// 💡 Approach: Use extra array to maintain order, then copy back
+
+class Solution {
+  public:
+    void segregateElements(vector<int>& arr) {
+        int n=arr.size();
+        vector<int> temp(n);
+        int index=0;
+        for(int i=0;i<n;i++){
+            if(arr[i]>=0)
+            temp[index++]=arr[i];
+        }
+             for(int i=0;i<n;i++){
+            if(arr[i]<0)
+            temp[index++]=arr[i];
+        }
+        for(int i=0;i<n;i++){
+            arr[i]=temp[i];
+        }
+    }
+};
