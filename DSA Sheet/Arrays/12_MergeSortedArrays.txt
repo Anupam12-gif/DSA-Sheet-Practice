@@ -1,0 +1,58 @@
+// ✅ Problem: Merge Two Sorted Arrays Without Extra Space
+// 📁 Category: Arrays / In-place
+// 🔗 GFG Link: https://practice.geeksforgeeks.org/problems/merge-two-sorted-arrays-1587115620/1
+// 💡 Approach: Gap Method (Clean version, no ternary operators)
+
+class Solution {
+  public:
+    void mergeArrays(vector<int>& a, vector<int>& b) {
+        int n = a.size();
+        int m = b.size();
+        int gap = (n + m + 1) / 2;  // Initial gap (ceiling)
+
+        while (gap > 0) {
+            int i = 0;
+            int j = gap;
+
+            while (j < n + m) {
+                int val1, val2;
+
+                // Get value at position i
+                if (i < n) {
+                    val1 = a[i];
+                } else {
+                    val1 = b[i - n];
+                }
+
+                // Get value at position j
+                if (j < n) {
+                    val2 = a[j];
+                } else {
+                    val2 = b[j - n];
+                }
+
+                // If values are out of order, swap them
+                if (val1 > val2) {
+                    if (i < n && j < n) {
+                        swap(a[i], a[j]);
+                    }
+                    else if (i < n && j >= n) {
+                        swap(a[i], b[j - n]);
+                    }
+                    else {
+                        swap(b[i - n], b[j - n]);
+                    }
+                }
+
+                i++;
+                j++;
+            }
+
+            // Shrink the gap
+            if (gap == 1)
+                break;
+
+            gap = (gap + 1) / 2;
+        }
+    }
+};
