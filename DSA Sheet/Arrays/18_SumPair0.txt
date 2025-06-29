@@ -1,0 +1,20 @@
+// Problem: Find all unique pairs in an array whose sum is zero
+// Approach: Hashing (unordered_set + set)
+
+class Solution {
+  public:
+    vector<vector<int>> getPairs(vector<int>& arr) {
+        unordered_set<int> seen;
+        set<vector<int>> result;
+        for(int num:arr){
+            if(seen.count(-num)){
+                int small=min(num,-num);
+                int large=max(num,-num);
+                result.insert({small,large});
+            }
+            seen.insert(num);
+        }
+         vector<vector<int>> finalResult(result.begin(),result.end());
+         return finalResult;
+    }
+};
