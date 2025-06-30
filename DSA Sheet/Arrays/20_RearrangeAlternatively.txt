@@ -1,0 +1,32 @@
+// Rearrange array in max-min-max-min form in-place without extra space
+// Works for unsorted input
+
+class Solution {
+  public:
+    void rearrange(vector<int>& arr) {
+        int n = arr.size();
+        sort(arr.begin(), arr.end()); // ✅ Step 1: Sort the array
+
+        int maxIdx = n - 1;
+        int minIdx = 0;
+
+        int maxElem = arr[n - 1] + 1; // ✅ Max + 1 to encode safely
+
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) {
+                // Even index → max element
+                arr[i] += (arr[maxIdx] % maxElem) * maxElem;
+                maxIdx--;
+            } else {
+                // Odd index → min element
+                arr[i] += (arr[minIdx] % maxElem) * maxElem;
+                minIdx++;
+            }
+        }
+
+        // Decode final values
+        for (int i = 0; i < n; i++) {
+            arr[i] = arr[i] / maxElem;
+        }
+    }
+};
