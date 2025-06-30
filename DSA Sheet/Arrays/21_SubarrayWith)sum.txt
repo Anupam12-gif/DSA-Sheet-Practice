@@ -1,0 +1,22 @@
+// ✅ Detect if a subarray with sum = 0 exists
+// 🔥 Uses prefix sum + unordered_set to detect duplicates
+// 🚫 No extra space beyond O(n)
+
+class Solution {
+  public:
+    // Complete this function
+    // Function to check whether there is a subarray present with 0-sum or not.
+    bool subArrayExists(vector<int>& arr) {
+        int n=arr.size();
+        unordered_set<int> prefixSums;
+        int sum=0;
+        for(int i=0;i<n;i++){
+            sum+=arr[i];
+            if(sum==0 || prefixSums.find(sum) != prefixSums.end()){
+                return true;
+            }
+            prefixSums.insert(sum);
+        }
+        return false;
+    }
+};
