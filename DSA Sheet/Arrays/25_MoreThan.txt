@@ -1,0 +1,20 @@
+// ✅ Count elements appearing more than n/k times using hashmap (frequency count method)
+
+class Solution {
+  public:
+    // Function to find all elements in array that appear more than n/k times.
+    int countOccurence(vector<int>& arr, int k) {
+        int n=arr.size();
+        unordered_map<int,int> freq;
+        for(int num : arr){
+            freq[num]++ ;
+        }
+            int count=0;
+        for(auto pair : freq){
+            if(pair.second > n/k){
+               count++; 
+            }
+        }
+        return count;
+    }
+};
