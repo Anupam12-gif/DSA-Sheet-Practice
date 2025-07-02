@@ -1,0 +1,24 @@
+// ✅ Commit: Check if one array is subset of another | Time: O(n + m), Space: O(n)
+
+class Solution {
+  public:
+    // Function to check if b is a subset of a
+    bool isSubset(vector<int> &a, vector<int> &b) {
+        unordered_map<int, int> freq;
+        
+        // Count frequency of elements in a[]
+        for (int num : a) {
+            freq[num]++;
+        }
+
+        // Check elements of b[] in freq map
+        for (int num : b) {
+            if (freq[num] == 0) {
+                return false;  // either not present or used up
+            }
+            freq[num]--; // use one occurrence
+        }
+
+        return true; // all b[] elements matched in a[]
+    }
+};
