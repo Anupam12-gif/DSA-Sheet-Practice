@@ -1,0 +1,27 @@
+class Solution {
+  public:
+    int maxWater(vector<int> &arr) {
+        int n = arr.size();
+        int left = 0, right = n - 1;
+        int leftMax = 0, rightMax = 0;
+        int totalWater = 0;
+
+        while (left < right) {
+            if (arr[left] < arr[right]) {
+                if (arr[left] >= leftMax)
+                    leftMax = arr[left];
+                else
+                    totalWater += leftMax - arr[left];
+                left++; // ✅ Always move left after processing
+            } else {
+                if (arr[right] >= rightMax)
+                    rightMax = arr[right];
+                else
+                    totalWater += rightMax - arr[right];
+                right--; // ✅ Always move right after processing
+            }
+        }
+
+        return totalWater;
+    }
+};
