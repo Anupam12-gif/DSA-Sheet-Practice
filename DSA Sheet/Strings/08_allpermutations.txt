@@ -1,0 +1,26 @@
+class Solution {
+public:
+    void backtrack(string &s, int index, vector<string> &res) {
+        if (index == s.size()) {
+            res.push_back(s);
+            return;
+        }
+
+        unordered_set<char> used;  // To avoid repeating characters at the same index
+
+        for (int i = index; i < s.size(); i++) {
+            if (used.count(s[i])) continue;  // Skip duplicates
+            used.insert(s[i]);
+
+            swap(s[index], s[i]);  // Fix current char at position `index`
+            backtrack(s, index + 1, res);
+            swap(s[index], s[i]);  // Backtrack
+        }
+    }
+
+    vector<string> findPermutation(string s) {
+        vector<string> res;
+        backtrack(s, 0, res);
+        return res;
+    }
+};
