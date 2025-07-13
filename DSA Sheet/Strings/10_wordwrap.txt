@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int solveWordWrap(vector<int> arr, int k) {
+        int n = arr.size();
+        vector<int> dp(n + 1, 0);  // dp[i] = min cost from i to end
+
+        for (int i = n - 1; i >= 0; i--) {
+            int currLen = -1;  // initialize with -1 to handle first space correctly
+            dp[i] = INT_MAX;
+
+            for (int j = i; j < n; j++) {
+                currLen += (arr[j] + 1);  // add word length and a space
+
+                if (currLen > k)
+                    break;  // can't fit further words
+
+                int cost;
+                if (j == n - 1)
+                    cost = 0;  // last line → no cost
+                else {
+                    int extraSpaces = k - currLen;
+                    cost = extraSpaces * extraSpaces;
+                }
+
+                dp[i] = min(dp[i], cost + dp[j + 1]);
+            }
+        }
+
+        return dp[0];
+    }
+};
