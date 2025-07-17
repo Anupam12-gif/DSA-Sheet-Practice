@@ -1,0 +1,22 @@
+// User function template for C++
+class Solution {
+  public:
+    string longestCommonPrefix(vector<string> arr) {
+        int n=arr.size();
+        if(n==0)return "";
+        
+        sort(arr.begin(), arr.end());
+
+        string first=arr[0];
+        string last=arr[n-1];
+        string result="";
+        for(int i=0;i<min(first.size(),last.size());i++){
+            if(first[i]==last[i]){
+                result+=first[i];
+            }else{
+                break;
+            }
+        }
+        return result;
+    }
+};
