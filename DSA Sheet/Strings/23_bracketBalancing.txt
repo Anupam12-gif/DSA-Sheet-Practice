@@ -1,0 +1,26 @@
+class Solution {
+  public:
+    int minimumNumberOfSwaps(string &s) {
+        int count = 0;       // net balance of [ and ]
+        int imbalance = 0;   // number of unmatched ]
+        int swaps = 0;
+
+        for (char c : s) {
+            if (c == '[') {
+                count++;
+                if (imbalance > 0) {
+                    swaps += imbalance;  // swap this [ with an earlier ]
+                    imbalance--;
+                }
+            } else {
+                count--;
+                if (count < 0) {
+                    imbalance++;
+                    // count = 0;  // reset count only to avoid negatives
+                }
+            }
+        }
+
+        return swaps;
+    }
+};
